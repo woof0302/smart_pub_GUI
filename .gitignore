@@ -1,0 +1,11 @@
+debug/
+release/
+*.o
+*.exe
+*.user
+*.pro.user
+*.qmake.stash
+*.qmake.super
+Makefile*
+moc_*
+
