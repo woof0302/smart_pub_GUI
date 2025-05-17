@@ -6,8 +6,9 @@ ApplicationWindow {
     width: 640
     height: 480
     title: "Kiosk"
+    // flags: Qt.FramelessWindowHint 타이틀 바 없이 실행
 
-    StackView {
+    StackView {         // 화면 전환 내장 QML 타입
         id: stackView
         anchors.fill: parent
         initialItem: "qrc:/first_page.qml"   // 첫 페이지는 여기서 시작

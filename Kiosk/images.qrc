@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/images"/>
+    <qresource prefix="/">
+        <file>images/rum_punch.png</file>
+        <file>images/pub.png</file>
+        <file>images/payment.png</file>
+        <file>images/negroni.png</file>
+        <file>images/mojito.png</file>
+        <file>images/magarita.png</file>
+        <file>images/cart.png</file>
+        <file>images/blue_lagoon.png</file>
+        <file>images/pay.png</file>
+        <file>images/back.png</file>
+    </qresource>
+</RCC>
