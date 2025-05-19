@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import TcpComm 1.0
 
 Item {
     width: 640
@@ -77,7 +78,8 @@ Item {
                     color: "#ff3b30"
                     radius: 20
                     Layout.alignment: Qt.AlignVCenter
-                    anchors.verticalCenter: parent.verticalCenter
+                    // anchors.verticalCenter: parent.verticalCenter
+
 
                     MouseArea {
                         anchors.fill: parent
@@ -128,6 +130,10 @@ Item {
         }
     }
 
+    TcpSender {
+        id: tcpSender
+    }
+
     Button {
         id: payButton
         width: 50
@@ -147,13 +153,15 @@ Item {
         }
 
         onClicked: {
+
+            CartModel.sendAllItemsToServer()
+
             var stack = parent
             while (stack && !stack.replace) stack = stack.parent
             if (stack) {
                 stack.replace("qrc:/payment.qml")
             }
-
-        }
+        }                
     }
 
 

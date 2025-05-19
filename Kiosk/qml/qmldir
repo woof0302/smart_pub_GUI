@@ -1,1 +1,4 @@
-singleton cart_model 1.0 cart_model.qml
+singleton car
+
+
+model 1.0 cart_model.qml  // 한 번만 메모리에 올려서 앱 전체가 공유 상태처럼 쓰도록 만드는 패턴

@@ -9,9 +9,9 @@ Item {
 
     ListModel {
         id: quantityModel
-        ListElement { name: "얼음"; quantity: 1 }
+        ListElement { name: "샷"; quantity: 1 }
         ListElement { name: "시럽"; quantity: 1 }
-        ListElement { name: "레몬"; quantity: 1 }
+        ListElement { name: "얼음"; quantity: 1 }
     }
 
     Row {
@@ -47,7 +47,7 @@ Item {
             spacing: 20
             anchors.verticalCenter: parent.verticalCenter
 
-            // 옵션 조절 영역
+            // 커스텀
             Repeater {
                 model: quantityModel
                 delegate: Row {
@@ -65,7 +65,7 @@ Item {
                         text: "-"
                         width: 50
                         onClicked: {
-                            if (model.quantity > 0)
+                            if (model.quantity > 1)
                                 quantityModel.setProperty(index, "quantity", model.quantity - 1)
                         }
                     }
@@ -88,7 +88,7 @@ Item {
                 }
             }
 
-            // 주문 담기 버튼 (오른쪽 정렬)
+            // 주문 담기 버튼
             Item {
                 width: parent.width
                 height: 50
@@ -100,12 +100,11 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
 
                     onClicked: {
-                        var quantities = []  // 커스텀 데이터 저장할 배열 생성
-                        for (var i = 0; i < quantityModel.count; ++i) {       // 배열에 데이터 저장
+                        var quantities = []
+                        for (var i = 0; i < quantityModel.count; ++i) {
                             quantities.push(quantityModel.get(i).quantity)
                         }
-                        console.log("메뉴:", selectedMenu)
-                        console.log("커스텀:", quantities)
+
                         CartModel.addItem(selectedMenu, 1, quantities)
 
                         var stack = parent
@@ -116,6 +115,36 @@ Item {
                     }
                 }
             }
+        }
+    }
+
+    // 뒤로가기 버튼 (order페이지)
+
+    Button {
+        id: backButton
+        width: 50
+        height: 50
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.margins: 20
+        background: Rectangle {
+            radius: 12
+            color: "transparent"
+        }
+
+        contentItem: Image {
+            source: "images/back.png"
+            fillMode: Image.PreserveAspectFit
+            anchors.fill: parent
+        }
+
+        onClicked: {
+            var stack = parent
+            while (stack && !stack.replace) stack = stack.parent
+            if (stack) {
+                stack.replace("qrc:/order.qml")
+            }
+
         }
     }
 }

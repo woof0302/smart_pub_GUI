@@ -61,7 +61,7 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("선택한 메뉴:", name)
+                    // console.log("선택한 메뉴:", name)
                     var stack = parent
                     while (stack && !stack.replace) stack = stack.parent
                     if (stack) {

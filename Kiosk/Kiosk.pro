@@ -1,4 +1,4 @@
-QT += quick virtualkeyboard sql
+QT += quick core network
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -7,7 +7,7 @@ QT += quick virtualkeyboard sql
 SOURCES += \
         cartmodel.cpp \
         main.cpp \
-        usermanager.cpp
+        tcpsender.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -25,8 +25,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     cartmodel.h \
-    usermanager.h
+    tcpsender.h
 
-DISTFILES += \
-    qml/cart_model.qml \
-    qml/qmldir
+DISTFILES +=

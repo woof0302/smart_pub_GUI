@@ -2,18 +2,13 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>first_page.qml</file>
-        <file>virtual_keyboard.qml</file>
-        <file>menu.qml</file>
         <file>shopping_cart.qml</file>
         <file>payment.qml</file>
-        <file>join_membership.qml</file>
-        <file>log_in.qml</file>
         <file>order.qml</file>
         <file>blue_lagoon.qml</file>
         <file>magarita.qml</file>
         <file>mojito.qml</file>
         <file>negroni.qml</file>
         <file>rum_punch.qml</file>
-
     </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 #include "cartmodel.h"
 #include <QDebug>
+#include <QTcpSocket>
 
 CartModel::CartModel(QObject* parent) : QAbstractListModel(parent) {}
 
@@ -23,6 +24,7 @@ QVariant CartModel::data(const QModelIndex& index, int role) const {
     }
 }
 
+// 속성 이름 정의
 QHash<int, QByteArray> CartModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[MenuRole] = "menu";
@@ -46,11 +48,11 @@ void CartModel::updateQuantity(int index, int newQuantity) {
     emit dataChanged(this->index(index), this->index(index), {QuantityRole});
 }
 
-void CartModel::clear() {
-    beginResetModel();
-    cartList.clear();
-    endResetModel();
-}
+//void CartModel::clear() {
+//    beginResetModel();
+//    cartList.clear();
+//    endResetModel();
+//}
 
 void CartModel::removeItem(int index) {
     if (index >= 0 && index < cartList.size()) {
@@ -59,6 +61,38 @@ void CartModel::removeItem(int index) {
         endRemoveRows();
     }
 }
+
+//QJsonArray CartModel::serializeToJson() const {
+//    QJsonArray jsonArray;  // JSON 배열 객체 (전체 결과 저장)
+
+//    for (const CartItem& item : cartList) {  // cartList에 대해 반복
+//        QJsonObject obj;  // CartItem (하나의 구조체 항목)
+//        obj["menuName"] = item.menuName;
+//        obj["quantity"] = item.quantity;
+
+//        QJsonArray optionsArray;    //option vector -> JSON 배열
+//        for (int opt : item.options)
+//            optionsArray.append(opt);
+
+//        obj["options"] = optionsArray;
+//        jsonArray.append(obj);
+//    }
+
+//    return jsonArray;
+//}
+
+
+void CartModel::sendAllItemsToServer() {
+    QList<QPair<QString, QVector<int>>> orders;
+
+    for (const CartItem& item : cartList) {
+        orders.append(qMakePair(item.menuName, item.options));
+    }
+
+    TcpSender sender;
+    sender.sendOrders(orders);
+}
+
 
 
 

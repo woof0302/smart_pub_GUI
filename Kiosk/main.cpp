@@ -1,27 +1,20 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-//#include "usermanager.h"
 #include "cartmodel.h"
-
-static QObject* cartModel_singletontype_provider(QQmlEngine*, QJSEngine*) {
-    return new CartModel();
-}
+#include "tcpsender.h"
 
 
 int main(int argc, char *argv[])
-{
-    //qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
-
+{    
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-    CartModel* cartModel = new CartModel();
+    CartModel* cartModel = new CartModel();    
+    engine.rootContext()->setContextProperty("CartModel", cartModel); // 글로벌 객체 등록
 
-    //engine.rootContext()->setContextProperty("CartModel", &cartModel);
-
-    engine.rootContext()->setContextProperty("CartModel", cartModel);
+    qmlRegisterType<TcpSender>("TcpComm", 1, 0, "TcpSender"); //
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

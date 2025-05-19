@@ -18,7 +18,7 @@ Item {
 
     Image {
         id: cardImage
-        source: "qrc:/images/payment.png"  // 이미지 또는 애니메이션 gif 가능
+        source: "qrc:/images/payment.png"
         anchors.centerIn: parent
         width: 450
         height: 300

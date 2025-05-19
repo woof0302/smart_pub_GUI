@@ -1,6 +1,6 @@
-debug/
-release/
+# Qt build artifacts
 *.o
+*.obj
 *.exe
 *.user
 *.pro.user
@@ -8,4 +8,19 @@ release/
 *.qmake.super
 Makefile*
 moc_*
+ui_*
+qrc_*
+
+# Build directories
+build-*/
+debug/
+release/
+
+# Editor/OS-specific
+*~
+.DS_Store
+*.swp
+
+# Qt Creator specific
+*.autosave
 
