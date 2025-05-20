@@ -3,8 +3,8 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
 Item {
-    width: 800
-    height: 480
+    width: 1200
+    height: 960
 
     Timer {
         id: paymentTimer
@@ -20,8 +20,8 @@ Item {
         id: cardImage
         source: "qrc:/images/payment.png"
         anchors.centerIn: parent
-        width: 450
-        height: 300
+        width: 900
+        height: 600
         fillMode: Image.PreserveAspectFit
     }
 
@@ -29,8 +29,8 @@ Item {
         text: "결제 중"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 40
-        font.pixelSize: 20
+        anchors.bottomMargin: 80
+        font.pixelSize: 40
         color: "#333"
     }
 }

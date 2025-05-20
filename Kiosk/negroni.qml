@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 800
-    height: 480
+    width: 1200
+    height: 960
 
     property string selectedMenu: "negroni"
 
@@ -16,26 +16,26 @@ Item {
 
     Row {
         anchors.fill: parent
-        spacing: 50
-        padding: 20
+        spacing: 100
+        padding: 40
 
-        Column{
-            spacing: 10
+        Column {
+            spacing: 20
             anchors.verticalCenter: parent.verticalCenter
 
             Image {
                 id: menuImage
                 source: "images/negroni.png"
-                width: 280
-                height: 280
+                width: 560
+                height: 560
                 fillMode: Image.PreserveAspectFit
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenterOffset: -20
+                anchors.verticalCenterOffset: -40
             }
 
             Text {
                 text: "Negroni"
-                font.pixelSize: 22
+                font.pixelSize: 44
                 font.bold: true
                 color: "#222222"
                 horizontalAlignment: Text.AlignHCenter
@@ -44,26 +44,25 @@ Item {
         }
 
         Column {
-            spacing: 20
+            spacing: 40
             anchors.verticalCenter: parent.verticalCenter
 
-            // 커스텀
             Repeater {
                 model: quantityModel
                 delegate: Row {
-                    spacing: 10
-                    height: 40
+                    spacing: 20
+                    height: 80
 
                     Text {
                         text: model.name
-                        width: 50
-                        font.pixelSize: 16
+                        width: 100
+                        font.pixelSize: 32
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Button {
                         text: "-"
-                        width: 50
+                        width: 100
                         onClicked: {
                             if (model.quantity > 1)
                                 quantityModel.setProperty(index, "quantity", model.quantity - 1)
@@ -72,14 +71,15 @@ Item {
 
                     Text {
                         text: model.quantity
-                        width: 30
+                        width: 60
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
+                        font.pixelSize: 28
                     }
 
                     Button {
                         text: "+"
-                        width: 50
+                        width: 100
                         onClicked: {
                             if(model.quantity < 5)
                                 quantityModel.setProperty(index, "quantity", model.quantity + 1)
@@ -88,14 +88,13 @@ Item {
                 }
             }
 
-            // 주문 담기 버튼
             Item {
                 width: parent.width
-                height: 50
+                height: 100
 
                 Button {
                     text: "주문담기"
-                    width: 100
+                    width: 200
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
 
@@ -118,15 +117,13 @@ Item {
         }
     }
 
-    // 뒤로가기 버튼 (order페이지)
-
     Button {
         id: backButton
-        width: 50
-        height: 50
+        width: 100
+        height: 100
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.margins: 20
+        anchors.margins: 40
         background: Rectangle {
             radius: 12
             color: "transparent"
@@ -144,7 +141,6 @@ Item {
             if (stack) {
                 stack.replace("qrc:/order.qml")
             }
-
         }
     }
 }

@@ -4,47 +4,47 @@ import QtQuick.Layouts 1.15
 import TcpComm 1.0
 
 Item {
-    width: 800
-    height: 480
+    width: 1200
+    height: 960
 
     ListView {
         anchors.fill: parent
         model: CartModel
-        spacing: 10
+        spacing: 20
         clip: true
 
         delegate: Rectangle {
             width: parent.width
-            height: 180
+            height: 360
             color: "#f4f4f4"
-            radius: 8
+            radius: 12
             border.color: "#cccccc"
             border.width: 1
             anchors.horizontalCenter: parent.horizontalCenter
 
             RowLayout {
                 anchors.fill: parent
-                anchors.margins: 10
-                spacing: 15
+                anchors.margins: 20
+                spacing: 30
 
                 Image {
                     source: "images/" + menu.toLowerCase().replace(" ", "_") + ".png"
-                    Layout.preferredWidth: 130
-                    Layout.preferredHeight: 130
+                    Layout.preferredWidth: 260
+                    Layout.preferredHeight: 260
                     fillMode: Image.PreserveAspectFit
                 }
 
                 ColumnLayout {
-                    spacing: 6
+                    spacing: 12
                     Layout.fillWidth: true
 
-                    Text { text: "메뉴: " + menu; font.pixelSize: 16 }
-                    Text { text: "얼음: " + option1; font.pixelSize: 14 }
-                    Text { text: "시럽: " + option2; font.pixelSize: 14 }
-                    Text { text: "레몬: " + option3; font.pixelSize: 14 }
+                    Text { text: "메뉴: " + menu; font.pixelSize: 32 }
+                    Text { text: "얼음: " + option1; font.pixelSize: 28 }
+                    Text { text: "시럽: " + option2; font.pixelSize: 28 }
+                    Text { text: "레몬: " + option3; font.pixelSize: 28 }
 
                     RowLayout {
-                        spacing: 10
+                        spacing: 20
 
                         Button {
                             text: "-"
@@ -56,7 +56,7 @@ Item {
 
                         Text {
                             text: quantity.toString()
-                            font.pixelSize: 16
+                            font.pixelSize: 32
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
@@ -73,8 +73,8 @@ Item {
 
                 // ✕ 삭제 버튼
                 Rectangle {
-                    width: 40
-                    height: 40
+                    width: 80
+                    height: 80
                     color: "#ff3b30"
                     radius: 20
                     Layout.alignment: Qt.AlignVCenter
@@ -93,7 +93,7 @@ Item {
                         text: "✕"
                         anchors.centerIn: parent
                         color: "white"
-                        font.pixelSize: 22
+                        font.pixelSize: 44
                         font.bold: true
                     }
                 }
@@ -104,11 +104,11 @@ Item {
 
     Button {
         id: backButton
-        width: 50
-        height: 50
+        width: 100
+        height: 100
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.margins: 20
+        anchors.margins: 40
         background: Rectangle {
             radius: 12
             color: "transparent"
@@ -136,11 +136,11 @@ Item {
 
     Button {
         id: payButton
-        width: 50
-        height: 50
+        width: 100
+        height: 100
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 20
+        anchors.margins: 40
         background: Rectangle {
             radius: 12
             color: "transparent"

@@ -4,8 +4,8 @@ import QtQuick.Window 2.15
 
 ApplicationWindow {
     visible: true
-    width: 800
-    height: 480
+    width: 1200
+    height: 960
     title: "Kiosk"
     // visibility: Window.FullScreen
     // flags: Qt.FramelessWindowHint 타이틀 바 없이 실행

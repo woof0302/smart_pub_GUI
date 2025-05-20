@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 800
-    height: 480
+    width: 1200
+    height: 960
 
     Image {
         id: background
