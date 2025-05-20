@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
 Item {
-    width: 640
+    width: 800
     height: 480
 
     Timer {

@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.15
 import TcpComm 1.0
 
 Item {
-    width: 640
+    width: 800
     height: 480
 
     ListView {

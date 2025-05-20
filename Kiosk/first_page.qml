@@ -2,14 +2,14 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 640
+    width: 800
     height: 480
 
     Image {
         id: background
         source: "qrc:images/pub.png"
         anchors.fill: parent
-        fillMode: Image.PreserveAspectCrop
+        fillMode: Image.Stretch //PreserveAspectCrop
     }
 
     Button {
@@ -17,7 +17,7 @@ Item {
         text: qsTr("주문하기")
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 10
+        anchors.margins: 15
 
         width: 120
         height: 40
