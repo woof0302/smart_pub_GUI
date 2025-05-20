@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 1200
-    height: 960
+    width: 1024
+    height: 768
 
     property string selectedMenu: "blue_lagoon"
 
@@ -16,26 +16,26 @@ Item {
 
     Row {
         anchors.fill: parent
-        spacing: 100
-        padding: 40
+        spacing: 80
+        padding: 32
 
-        Column{
-            spacing: 20
+        Column {
+            spacing: 16
             anchors.verticalCenter: parent.verticalCenter
 
             Image {
                 id: menuImage
                 source: "images/blue_lagoon.png"
-                width: 560
-                height: 560
+                width: 460
+                height: 460
                 fillMode: Image.PreserveAspectFit
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenterOffset: -40
+                anchors.verticalCenterOffset: -32
             }
 
             Text {
                 text: "Blue Lagoon"
-                font.pixelSize: 44
+                font.pixelSize: 36
                 font.bold: true
                 color: "#222222"
                 horizontalAlignment: Text.AlignHCenter
@@ -43,74 +43,68 @@ Item {
             }
         }
 
-
-
         Column {
-            spacing: 40
+            spacing: 32
             anchors.verticalCenter: parent.verticalCenter
 
-            // 커스텀
             Repeater {
                 model: quantityModel
                 delegate: Row {
-                    spacing: 20
-                    height: 80
+                    spacing: 16
+                    height: 64
 
                     Text {
                         text: model.name
-                        width: 100
-                        font.pixelSize: 32
+                        width: 80
+                        font.pixelSize: 26
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Button {
                         text: "-"
-                        width: 100
+                        width: 80
                         onClicked: {
                             if (model.quantity > 1)
-                                quantityModel.setProperty(index, "quantity", model.quantity - 1) // setProperty() ListModel 내장 함수
+                                quantityModel.setProperty(index, "quantity", model.quantity - 1)
                         }
                     }
 
                     Text {
                         text: model.quantity
-                        width: 60
+                        width: 50
+                        font.pixelSize: 24
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Button {
                         text: "+"
-                        width: 100
+                        width: 80
                         onClicked: {
-                            if(model.quantity < 5)
+                            if (model.quantity < 5)
                                 quantityModel.setProperty(index, "quantity", model.quantity + 1)
                         }
-
                     }
                 }
             }
 
-            // 주문 담기 버튼
             Item {
                 width: parent.width
-                height: 100
+                height: 80
 
                 Button {
                     text: "주문담기"
-                    width: 200
+                    width: 160
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
 
                     onClicked: {
-                        var quantities = [] // 커스텀 데이터 저장할 배열 생성
-                        for (var i = 0; i < quantityModel.count; ++i) {   // 배열에 데이터 저장
+                        var quantities = []
+                        for (var i = 0; i < quantityModel.count; ++i) {
                             quantities.push(quantityModel.get(i).quantity)
                         }
-                        CartModel.addItem(selectedMenu, 1, quantities)
 
-                        // console.log("메뉴:", selectedMenu)
-                        // console.log("옵션 수량:", quantities)
+                        CartModel.addItem(selectedMenu, 1, quantities)
 
                         var stack = parent
                         while (stack && !stack.replace) stack = stack.parent
@@ -120,20 +114,18 @@ Item {
                     }
                 }
             }
-
         }
     }
 
-    // 뒤로가기 버튼 (order페이지)
     Button {
         id: backButton
-        width: 100
-        height: 100
+        width: 80
+        height: 80
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.margins: 40
+        anchors.margins: 32
         background: Rectangle {
-            radius: 12
+            radius: 10
             color: "transparent"
         }
 
@@ -149,7 +141,6 @@ Item {
             if (stack) {
                 stack.replace("qrc:/order.qml")
             }
-
         }
     }
 }

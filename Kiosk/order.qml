@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 1200
-    height: 960
+    width: 1024
+    height: 768
 
     property var cartModelRef
 
@@ -13,7 +13,7 @@ Item {
         height: parent.height
         model: menuModel
         delegate: menuItemDelegate
-        spacing: 20
+        spacing: 16
         orientation: ListView.Vertical
         clip: true
     }
@@ -32,36 +32,34 @@ Item {
 
         Rectangle {
             width: menuList.width
-            height: 400
+            height: 300
             color: "#fdf6ec"
 
-
             Row {
-                spacing: 300
+                spacing: 40
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
+                anchors.leftMargin: 40
 
                 Image {
                     source: image
-                    width: 400
-                    height: 400
+                    width: 240
+                    height: 240
                     fillMode: Image.PreserveAspectFit
                 }
 
                 Text {
                     text: name
-                    font.pixelSize: 60
+                    font.pixelSize: 36
                     font.bold: true
+                    verticalAlignment: Text.AlignVCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.left: image.right
-                    anchors.leftMargin: 200
                 }
             }
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    // console.log("선택한 메뉴:", name)
                     var stack = parent
                     while (stack && !stack.replace) stack = stack.parent
                     if (stack) {
@@ -72,19 +70,17 @@ Item {
                         else if (name === "Rum Punch") stack.push("qrc:/rum_punch.qml")
                     }
                 }
-            }            
-        }        
+            }
+        }
     }
 
-
     Rectangle {
-
-        width: 140
-        height: 140
+        width: 100
+        height: 100
         radius: 12
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 20
+        anchors.margins: 24
         color: "transparent"
 
         Image {

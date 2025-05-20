@@ -3,8 +3,8 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
 Item {
-    width: 1200
-    height: 960
+    width: 1024
+    height: 768
 
     Timer {
         id: paymentTimer
@@ -20,8 +20,8 @@ Item {
         id: cardImage
         source: "qrc:/images/payment.png"
         anchors.centerIn: parent
-        width: 900
-        height: 600
+        width: 600
+        height: 400
         fillMode: Image.PreserveAspectFit
     }
 
