@@ -13,21 +13,32 @@ void TcpSender::sendOrders(const QList<QPair<QString, QVector<int>>> &orders)
         QString menu = order.first;
         QVector<int> options = order.second;
 
-        QString optionString;
-        for (int i = 0; i < options.size(); ++i) {
-            optionString += QString::number(options[i]);
-            if (i != options.size() - 1)
-                optionString += "@";
-        }
+        QStringList tokens;
+           tokens << menu;
+           tokens << QString::number(1);  // 수량 고정
 
-        QString oneOrder = QString("%1:%2:%3").arg(menu).arg(1).arg(optionString);
-        orderStrings << oneOrder;
+           for (int i = 0; i < options.size(); ++i) {
+               tokens << QString::number(options[i]);
+           }
+
+           QString oneOrder = tokens.join("@");
+           orderStrings << oneOrder;
+
+//        QString optionString;
+//        for (int i = 0; i < options.size(); ++i) {
+//            optionString += QString::number(options[i]);
+//            if (i != options.size() - 1)
+//                optionString += "@";
+//        }
+
+//        QString oneOrder = QString("%1:%2:%3").arg(menu).arg(1).arg(optionString);
+//        orderStrings << oneOrder;
     }
 
-    QString finalData = orderStrings.join("@");  // 주문 구분자: @
+    QString finalData = orderStrings.join("@");
     QByteArray payload = finalData.toUtf8();
 
-    socket.connectToHost("127.0.0.1", 12345);
+    socket.connectToHost("10.10.14.2", 12345);
     if (socket.waitForConnected(1000)) {
         socket.write(payload);
         socket.flush();
