@@ -48,8 +48,8 @@ Item {
 
                         Button {
                             text: "-"
-                            width: 50
-                            height: 35
+                            Layout.preferredWidth: 50
+                                Layout.preferredHeight: 25
                             onClicked: {
                                 if (quantity > 1)
                                     CartModel.updateQuantity(index, quantity - 1)
@@ -65,8 +65,8 @@ Item {
 
                         Button {
                             text: "+"
-                            width: 50
-                            height: 35
+                            Layout.preferredWidth: 50
+                                Layout.preferredHeight: 25
                             onClicked: {
                                 if(quantity < 10){
                                     CartModel.updateQuantity(index, quantity + 1)
