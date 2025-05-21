@@ -4,18 +4,18 @@ import QtQuick.Layouts 1.15
 import TcpComm 1.0
 
 Item {
-    width: 1024
-    height: 768
+    width: 800
+    height: 480
 
     ListView {
         anchors.fill: parent
         model: CartModel
-        spacing: 16
+        spacing: 10
         clip: true
 
         delegate: Rectangle {
             width: parent.width
-            height: 280
+            height: 160
             color: "#f4f4f4"
             radius: 12
             border.color: "#cccccc"
@@ -24,30 +24,28 @@ Item {
 
             RowLayout {
                 anchors.fill: parent
-                anchors.margins: 16
-                spacing: 20
+                anchors.margins: 8
+                spacing: 12
 
                 Image {
                     source: "images/" + menu.toLowerCase().replace(" ", "_") + ".png"
-                    Layout.preferredWidth: 200
-                    Layout.preferredHeight: 200
+                    Layout.preferredWidth: 100
+                    Layout.preferredHeight: 100
                     fillMode: Image.PreserveAspectFit
                 }
 
                 ColumnLayout {
-                    spacing: 8
+                    spacing: 4
                     Layout.fillWidth: true
 
-                    Text { text: "메뉴: " + menu; font.pixelSize: 28 }
-                    Text { text: "얼음: " + option1; font.pixelSize: 24 }
-                    Text { text: "시럽: " + option2; font.pixelSize: 24 }
-                    Text { text: "레몬: " + option3; font.pixelSize: 24 }
+                    Text { text: "메뉴: " + menu; font.pixelSize: 20 }
+                    Text { text: "얼음: " + option1; font.pixelSize: 18 }
+                    Text { text: "시럽: " + option2; font.pixelSize: 18 }
+                    Text { text: "레몬: " + option3; font.pixelSize: 18 }
 
-                    Row {
-                        x: 700
-                        spacing: 16
-//                        anchors.left: parent.left
-//                        anchors.leftMargin: 300
+                    RowLayout {
+                        spacing: 8
+
                         Button {
                             text: "-"
                             onClicked: {
@@ -58,27 +56,27 @@ Item {
 
                         Text {
                             text: quantity.toString()
-                            font.pixelSize: 28
+                            font.pixelSize: 18
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
 
                         Button {
                             text: "+"
-                            onClicked:
+                            onClicked: {
                                 if(quantity < 10){
                                     CartModel.updateQuantity(index, quantity + 1)
                                 }
+                            }
                         }
                     }
                 }
 
-                // 주문 빼기 버튼
                 Rectangle {
-                    width: 64
-                    height: 64
+                    width: 48
+                    height: 48
                     color: "#ff3b30"
-                    radius: 16
+                    radius: 12
                     Layout.alignment: Qt.AlignVCenter
 
                     MouseArea {
@@ -92,7 +90,7 @@ Item {
                         text: "✕"
                         anchors.centerIn: parent
                         color: "white"
-                        font.pixelSize: 36
+                        font.pixelSize: 24
                         font.bold: true
                     }
                 }
@@ -103,11 +101,11 @@ Item {
     // 뒤로가기 버튼
     Button {
         id: backButton
-        width: 80
-        height: 80
+        width: 60
+        height: 60
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.margins: 32
+        anchors.margins: 16
         background: Rectangle {
             radius: 10
             color: "transparent"
@@ -135,11 +133,11 @@ Item {
     // 결제 버튼
     Button {
         id: payButton
-        width: 80
-        height: 80
+        width: 60
+        height: 60
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 32
+        anchors.margins: 16
         background: Rectangle {
             radius: 10
             color: "transparent"

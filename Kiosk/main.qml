@@ -4,11 +4,11 @@ import QtQuick.Window 2.15
 
 ApplicationWindow {
     visible: true
-    width: 1024
-    height: 768
+    width: 800
+    height: 480
     title: "Kiosk"
     // visibility: Window.FullScreen
-    // flags: Qt.FramelessWindowHint 타이틀 바 없이 실행
+    // flags: Qt.FramelessWindowHint
 
     Item {
         anchors.fill: parent
@@ -20,11 +20,10 @@ ApplicationWindow {
             }
         }
 
-        StackView {         // 화면 전환 내장 QML 타입
+        StackView {
             id: stackView
             anchors.fill: parent
-            initialItem: "qrc:/first_page.qml"   // 첫 페이지는 여기서 시작
+            initialItem: "qrc:/first_page.qml"
         }
-
     }
 }

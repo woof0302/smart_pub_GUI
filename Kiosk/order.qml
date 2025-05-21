@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 1024
-    height: 768
+    width: 800
+    height: 480
 
     property var cartModelRef
 
@@ -13,7 +13,7 @@ Item {
         height: parent.height
         model: menuModel
         delegate: menuItemDelegate
-        spacing: 16
+        spacing: 10
         orientation: ListView.Vertical
         clip: true
     }
@@ -32,25 +32,25 @@ Item {
 
         Rectangle {
             width: menuList.width
-            height: 300
+            height: 180
             color: "#fdf6ec"
 
             Row {
-                spacing: 40
+                spacing: 20
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                anchors.leftMargin: 40
+                anchors.leftMargin: 16
 
                 Image {
                     source: image
-                    width: 240
-                    height: 240
+                    width: 120
+                    height: 120
                     fillMode: Image.PreserveAspectFit
                 }
 
                 Text {
                     text: name
-                    font.pixelSize: 36
+                    font.pixelSize: 22
                     font.bold: true
                     verticalAlignment: Text.AlignVCenter
                     anchors.verticalCenter: parent.verticalCenter
@@ -75,12 +75,12 @@ Item {
     }
 
     Rectangle {
-        width: 100
-        height: 100
+        width: 64
+        height: 64
         radius: 12
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 24
+        anchors.margins: 16
         color: "transparent"
 
         Image {

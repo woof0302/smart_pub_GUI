@@ -2,8 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    width: 1024
-    height: 768
+    width: 800
+    height: 480
 
     property string selectedMenu: "blue_lagoon"
 
@@ -16,26 +16,26 @@ Item {
 
     Row {
         anchors.fill: parent
-        spacing: 80
-        padding: 32
+        spacing: 40
+        padding: 16
 
         Column {
-            spacing: 16
+            spacing: 8
             anchors.verticalCenter: parent.verticalCenter
 
             Image {
                 id: menuImage
                 source: "images/blue_lagoon.png"
-                width: 460
-                height: 460
+                width: 280
+                height: 280
                 fillMode: Image.PreserveAspectFit
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenterOffset: -32
+                anchors.verticalCenterOffset: -16
             }
 
             Text {
                 text: "Blue Lagoon"
-                font.pixelSize: 36
+                font.pixelSize: 26
                 font.bold: true
                 color: "#222222"
                 horizontalAlignment: Text.AlignHCenter
@@ -44,25 +44,25 @@ Item {
         }
 
         Column {
-            spacing: 32
+            spacing: 16
             anchors.verticalCenter: parent.verticalCenter
 
             Repeater {
                 model: quantityModel
                 delegate: Row {
-                    spacing: 16
-                    height: 64
+                    spacing: 8
+                    height: 48
 
                     Text {
                         text: model.name
-                        width: 80
-                        font.pixelSize: 26
+                        width: 60
+                        font.pixelSize: 20
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Button {
                         text: "-"
-                        width: 80
+                        width: 50
                         onClicked: {
                             if (model.quantity > 1)
                                 quantityModel.setProperty(index, "quantity", model.quantity - 1)
@@ -71,15 +71,15 @@ Item {
 
                     Text {
                         text: model.quantity
-                        width: 50
-                        font.pixelSize: 24
+                        width: 30
+                        font.pixelSize: 18
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Button {
                         text: "+"
-                        width: 80
+                        width: 50
                         onClicked: {
                             if (model.quantity < 5)
                                 quantityModel.setProperty(index, "quantity", model.quantity + 1)
@@ -90,11 +90,11 @@ Item {
 
             Item {
                 width: parent.width
-                height: 80
+                height: 60
 
                 Button {
                     text: "주문담기"
-                    width: 160
+                    width: 120
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
 
@@ -119,11 +119,11 @@ Item {
 
     Button {
         id: backButton
-        width: 80
-        height: 80
+        width: 60
+        height: 60
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.margins: 32
+        anchors.margins: 16
         background: Rectangle {
             radius: 10
             color: "transparent"
