@@ -7,7 +7,8 @@ ApplicationWindow {
     width: 800
     height: 480
     title: "Kiosk"
-    // visibility: Window.FullScreen
+    visibility: Window.FullScreen
+    flags: Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     // flags: Qt.FramelessWindowHint
 
     Item {
