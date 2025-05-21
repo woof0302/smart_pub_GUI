@@ -9,9 +9,9 @@ Item {
 
     ListModel {
         id: quantityModel
-        ListElement { name: "샷"; quantity: 1 }
-        ListElement { name: "시럽"; quantity: 1 }
-        ListElement { name: "얼음"; quantity: 1 }
+        ListElement { name: "샷1"; quantity: 1 }
+        ListElement { name: "샷2"; quantity: 1 }
+        //ListElement { name: "얼음"; quantity: 1 }
     }
 
     Row {

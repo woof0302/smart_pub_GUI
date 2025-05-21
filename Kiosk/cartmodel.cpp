@@ -19,7 +19,7 @@ QVariant CartModel::data(const QModelIndex& index, int role) const {
         case QuantityRole: return item.quantity;
         case Option1Role: return item.options.value(0);
         case Option2Role: return item.options.value(1);
-        case Option3Role: return item.options.value(2);
+        //case Option3Role: return item.options.value(2);
         default: return QVariant();
     }
 }
@@ -31,7 +31,7 @@ QHash<int, QByteArray> CartModel::roleNames() const {
     roles[QuantityRole] = "quantity";
     roles[Option1Role] = "option1";
     roles[Option2Role] = "option2";
-    roles[Option3Role] = "option3";
+    //roles[Option3Role] = "option3";
     return roles;
 }
 

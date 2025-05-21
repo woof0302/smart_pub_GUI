@@ -17,7 +17,7 @@ void TcpSender::sendOrders(const QList<QPair<QString, QVector<int>>> &orders)
         for (int i = 0; i < options.size(); ++i) {
             optionString += QString::number(options[i]);
             if (i != options.size() - 1)
-                optionString += ",";
+                optionString += "@";
         }
 
         QString oneOrder = QString("%1:%2:%3").arg(menu).arg(1).arg(optionString);

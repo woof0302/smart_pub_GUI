@@ -27,7 +27,7 @@ public:
         QuantityRole,
         Option1Role,
         Option2Role,
-        Option3Role
+        //Option3Role
     };
 
     // const QList<CartItem>& getCartList() const;  // getter
@@ -39,10 +39,9 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
     Q_INVOKABLE void addItem(const QString& menu, int quantity, const QVector<int>& options);
-    Q_INVOKABLE void updateQuantity(int index, int newQuantity);
-    // Q_INVOKABLE void clear();
+    Q_INVOKABLE void updateQuantity(int index, int newQuantity);    
     Q_INVOKABLE void removeItem(int index);
-
+    // Q_INVOKABLE void clear();
 
 private:
     QList<CartItem> cartList;  // 메뉴 저장하는 구조체 배열

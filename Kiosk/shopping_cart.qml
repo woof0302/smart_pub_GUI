@@ -39,9 +39,9 @@ Item {
                     Layout.fillWidth: true
 
                     Text { text: "메뉴: " + menu; font.pixelSize: 20 }
-                    Text { text: "얼음: " + option1; font.pixelSize: 18 }
-                    Text { text: "시럽: " + option2; font.pixelSize: 18 }
-                    Text { text: "레몬: " + option3; font.pixelSize: 18 }
+                    Text { text: "샷1: " + option1; font.pixelSize: 18 }
+                    Text { text: "샷2: " + option2; font.pixelSize: 18 }
+                    //Text { text: "레몬: " + option3; font.pixelSize: 18 }
 
                     RowLayout {
                         spacing: 8
